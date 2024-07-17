@@ -34,7 +34,8 @@ If you don’t know how to use the terminal, you can right click on the folder F
 
 **NOTE:** if you are using GOGEL (Global Oil and Gas Exit List)  and GCEL (Global Coal Exit List) as your lists of fossil fuel companies, you can skip steps 4 and 5 and use the folder titled “cleaned_queries” as your folder of cleaned queries directly. (Since I have already done this process on them). If you are using other lists, read the details on the instructions carefully to get the format to match the expected format of your lists. 
 
-4. Generating Queries
+4. Generating Queries:
+   
 This is to generate the groups of 49 companies as search terms (each company in quotes separated by 'OR')
 
 We will be using the script `generate_queries.py` in the `scripts` folder. The general usage of this script is:
@@ -56,7 +57,8 @@ For example, line 1 of `GOGEL_upstream.txt` is:
 "1876 Resources LLC" OR "88 Energy Ltd" OR "89 Energy III LLC" OR "AAG Energy Holdings Ltd" OR "Abu Dhabi National Energy Company PJSC (TAQA)" OR "Abu Dhabi National Oil Company (ADNOC)" OR "Adani Welspun Exploration Ltd" OR "Advantage Energy Ltd" OR "Aethon Energy Management LLC" OR "Africa Oil Corp" OR "Ageron Energy LLC  " OR "Aker BP ASA" OR "Alpine Summit Energy Partners Inc" OR "Alvopetro Energy Ltd" OR "Ameredev II LLC" OR "Amni International Petroleum Development Company Ltd" OR "Amplify Energy Corp" OR "Anschutz Exploration Corporation" OR "Antelopus Energy Pvt Ltd" OR "Antero Resources Corporation" OR "APA Corporation" OR "Apex Energy LLC" OR "Apex International Energy Management LLC" OR "APR Operating LLC (Admiral Permian Resources)" OR "ARAR Oil & Gas Inc" OR "ARC Resources Ltd" OR "Arsenal Resources LLC" OR "Artis Exploration Ltd" OR "Ascent Resources LLC" OR "Aspenleaf Energy Ltd" OR "Athabasca Oil Corporation" OR "Atlas Petroleum International Ltd" OR "Avant Natural Resources LLC" OR "Azule Energy Holdings Ltd" OR "Ballard Petroleum Holdings LLC " OR "Banco BTG Pactual SA" OR "Bangladesh Oil, Gas & Mineral Corporation (Petrobangla)" OR "Bapco Energies BSC" OR "Basra Oil Company (BOC)" OR "Battalion Oil Corporation " OR "Bayswater Exploration and Production LLC" OR "Baytex Energy Corp" OR "BCE-Mach LLC" OR "Beach Energy Ltd" OR "Beacon Offshore Energy LLC" OR "Bedrock Energy Partners LLC" OR "Belemaoil Producing Ltd" OR "Benchmark Energy LLC" OR "Berry Corporation (bry)"
 ```
 
-5. Cleaning Queries
+5. Cleaning Queries:
+   
 This is to clean the queries of the various corporation endings (Ltd, LLC, Corporation...etc) because I had noticed significantly fewer results when they were included (probably due to naming discrepancies). It also goes through items contained in paranthesis in these company names because they were also messing with the results, but these terms are appended as an additional line at the end just in case they have their own results.
 
 We will be using the script `clean_queries.py` in the `scripts` folder. The general usage of this script is:
@@ -76,7 +78,8 @@ For example, line 1 of `GOGEL_upstream_cleaned.txt` is:
 "1876 Resources " OR "88 Energy " OR "89 Energy III " OR "AAG Energy Holdings " OR "Abu Dhabi National Energy PJSC " OR "Abu Dhabi National Oil " OR "Adani Welspun Exploration " OR "Advantage Energy " OR "Aethon Energy Management " OR "Africa Oil " OR "Ageron Energy " OR "Aker BP ASA" OR "Alpine Summit Energy Partners " OR "Alvopetro Energy " OR "Ameredev II " OR "Amni International Petroleum Development " OR "Amplify Energy " OR "Anschutz Exploration " OR "Antelopus Energy Pvt " OR "Antero Resources " OR "APA " OR "Apex Energy " OR "Apex International Energy Management " OR "APR Operating " OR "ARAR Oil & Gas " OR "ARC Resources " OR "Arsenal Resources " OR "Artis Exploration " OR "Ascent Resources " OR "Aspenleaf Energy " OR "Athabasca Oil " OR "Atlas Petroleum International " OR "Avant Natural Resources " OR "Azule Energy Holdings " OR "Ballard Petroleum Holdings " OR "Banco BTG Pactual " OR "Bangladesh Oil, Gas & Mineral " OR "Bapco Energies BSC" OR "Basra Oil " OR "Battalion Oil " OR "Bayswater Exploration and Production " OR "Baytex Energy " OR "BCE-Mach " OR "Beach Energy " OR "Beacon Offshore Energy " OR "Bedrock Energy Partners " OR "Belemaoil Producing " OR "Benchmark Energy " OR "Berry "
 ```
 
-6. Searching WOS and Saving Results 
+6. Searching WOS and Saving Results:
+   
 Now that the cleaned queries are generated, its time to search with them in Web of Science. This is the manual process -- go to Web of Science and copy each of the lines into the "Funding Agency" searchbar and put your school into "Affiliation". Each time, if there are any results, click:
 - Export
 - Excel
@@ -90,6 +93,7 @@ You can look into "WOS_results" to see my results (for Columbia University) and 
 Make sure what you have selected to save into the Excel file is the same every time. 
 
 7. Consolidating Results:
+   
 Now we want to combine all the different results and get rid of any duplicates which there are sure to be. For this we use `scripts\consolidate_files.py`
 The general usage of this file is:
 ```
@@ -105,7 +109,8 @@ This will go through every xls file (how WOS exports the excel files) in `cleane
 
 ### Optional additional scripts:
 
-8. Reformatting Columns
+8. Reformatting Columns:
+   
 If you want to reformat the column order of this excel file, the script `scripts/reorganize_columns.py` will help you do that. For our group, we had come up with a format we wanted all of our results to follow beforehand with a certain order of columns, so this script currently reformats the excel file into the following column order:
 ```
 Funder	Donation Amount	Year	Type of Donations: (gift, sponsored projects...)	Columbia school	Columbia Affiliates	Which Specific Columbia Program?	Source	Specific Study DOI	Notes	Author Full Names	Article Title	Source Title	Affiliations	Funding Text	ISSN										
@@ -122,7 +127,8 @@ Example Usage:
 python3 scripts/reorganize_columns.py "all_WOS_results.xlsx" "all_WOS_results_standardized.xlsx"
 ```
 
-9. Search
+9. Search:
+    
 This is just a helpful file to search for any term in your `WOS_results` folder full of excel files. I had a gap in funder information in my final resutls and figured out where it was by using the `scripts/search.py` file, was able to easily access which query I had used that had produced that excel file with the gaps due to the naming organization in my query folders, re-search, and re-consolidate!
 
 General usage:
