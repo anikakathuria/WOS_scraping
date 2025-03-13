@@ -4,7 +4,7 @@ Here is a guide to using python scripts to help in searching Web of Science for 
 
 You will have to use the terminal and have python installed but even if you are not familiar with coding, this guide should be fairly straightforward and you shouldn’t have to code at all!
 
-Please reach out to me (Anika Kathuria, ak4748@columbia.edu, (908) 635-2451) if you have any questions or run into any issues!!
+Please reach out to me if you have any questions or run into any issues!!
 
 Note: All of my results are uploaded here to look at an example, but delete those files if you want to have the same names for your own or just replace them as you generate your own. 
 
